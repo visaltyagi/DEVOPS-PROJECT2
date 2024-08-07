@@ -1,0 +1,40 @@
+sudo apt-get update
+
+sudo apt install software-properties-common
+
+sudo apt-add-repository - yes - update ppa:ansible/ansible
+
+sudo apt-get install ansible
+
+ansible --version
+
+cd .ssh/
+
+ssh-keygen
+
+sudo cat id_ed25519.pub
+
+cd .ssh/
+
+cd .ssh/
+
+cd .ssh/
+
+sudo nano authorized_keys
+
+sudo nano authorized_keys
+
+sudo nano authorized_keys
+
+cd ..
+
+sudo nano /etc/ansible/hosts
+
+[master]
+Machine3 ansible_host=10.0.6.181
+[slaves]
+Machine2 ansible_host=10.0.2.158
+Machine4 ansible_host=10.0.6.49
+
+ansible -m ping all
+
