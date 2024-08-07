@@ -1,0 +1,31 @@
+pipeline {
+    agent none
+    environment {
+        DOCKERHUB_CREDENTIALS=credentials('2d637aab-be8f-43b1-b1ed-f01bc5bb095e')
+    }
+    stages {
+        stage('Hello') {
+            steps {
+                echo 'Hello World'
+            }
+        }
+        stage('Git') {
+            agent {
+                label 'Kubernetes-Master'
+            }
+            steps {
+                git 'https://github.com/visaltyagi/website.git'
+            }
+        }
+        stage('Docker') {
+            agent {
+                label 'Kubernetes-Master'
+            }
+            steps {
+                sh 'sudo docker build /home/ubuntu/jenkins/workspace/Testpipeline -t visaltyagi12/project2'
+                sh 'sudo echo $DOCKERHUB_CREDENTIALS_PSW | sudo docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
+                sh 'sudo docker push visaltyagi12/project2'
+            }
+        }
+    }
+}
