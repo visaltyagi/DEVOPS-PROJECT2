@@ -197,7 +197,7 @@ ansible-playbook play.yaml
 
 #16: Initialize the Kubeadm using the below-given command:
 
-sudo kubeadm init - apiserver-advertise-address= 10.0.6.181
+sudo kubeadm init --apiserver-advertise-address=10.0.6.181
 
 #17: Paste the token to Slaves for joing the nodes using the below-given command:
 
